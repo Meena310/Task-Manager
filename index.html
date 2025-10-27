@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WhisperNote</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+  <nav class="navbar">
+    <h1 class="logo">Task Manager</h1>
+    <div class="nav-actions">
+      <button id="openModalBtn" class="add-btn">＋ Add Task</button>
+      <button class="theme-toggle">🌙</button>
+    </div>
+  </nav>
+
+  <main class="notes-container">
+    <input type="text" class="search-bar" placeholder="🔍 Search your notes...">
+    <ul id="itemList" class="note-list"></ul>
+  </main>
+
+  <div id="noteModal" class="modal-overlay">
+    <div class="modal">
+      <button class="close-modal">&times;</button>
+      <h2>Create a New Task 📝</h2>
+
+      <div class="editor-toolbar">
+        <button data-cmd="bold"><b>B</b></button>
+        <button data-cmd="italic"><i>I</i></button>
+        <button data-cmd="insertUnorderedList">• List</button>
+      </div>
+
+      <div id="richEditor" class="rich-editor" contenteditable="true" placeholder="Write something..."></div>
+
+      <div class="extras">
+        <input id="tagInput" type="text" placeholder="# Add tag (optional)">
+        <input id="deadlineInput" type="date" class="deadline-input">
+        <button id="addBtn" class="primary-btn">Add</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">© 2025 Task Manager | Built by Meena Setua</footer>
+
+  <script src="app.js"></script>
+  <script>
+    const modal = document.getElementById("noteModal");
+    const openBtn = document.getElementById("openModalBtn");
+    const closeBtn = document.querySelector(".close-modal");
+
+    openBtn.onclick = () => {
+      modal.classList.add("active");
+    };
+    closeBtn.onclick = () => {
+      modal.classList.remove("active");
+    };
+    window.onclick = (e) => {
+      if (e.target === modal) modal.classList.remove("active");
+    };
+  </script>
+</body>
+</html>
